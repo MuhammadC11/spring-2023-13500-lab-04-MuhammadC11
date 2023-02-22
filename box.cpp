@@ -24,15 +24,31 @@ std::string checker(int width, int height)
     {
         for (int j = 0; j < width; j++) // for loop to print the width
         {
-            if (index % 2 == 0)
+            if (i % 2 == 0) // if the row is even
             {
-                result += "*"; // print the star
-                index++;
+                if (j % 2 == 0) // if the column is even
+                {
+                    result += "*"; // print the star
+                    index++;
+                }
+                else
+                {
+                    result += " "; // print the star
+                    index++;
+                }
             }
-            else
+            else // if the row is odd
             {
-                result += " "; // print the star
-                index++;
+                if (j % 2 == 0) // if the column is even
+                {
+                    result += " "; // print the star
+                    index++;
+                }
+                else
+                {
+                    result += "*"; // print the star
+                    index++;
+                }
             }
         }
         result += "\n";
@@ -80,6 +96,100 @@ std::string lower(int length)
             else
             {
                 result += " "; // print the star
+            }
+        }
+        result += "\n";
+    }
+    return result;
+}
+
+std::string upper(int length)
+{
+    std::string result = "";
+    std::cout << "Shape with length " << length << ": " << std::endl;
+    for (int i = 0; i < length; i++) // for loop to print the height
+    {
+
+        for (int j = 0; j < length; j++) // for loop to print the width
+        {
+            if (j >= i)
+            {
+                result += "*"; // print the star
+            }
+            else
+            {
+                result += " "; // print the star
+            }
+        }
+        result += "\n";
+    }
+    return result;
+}
+
+std::string trapezoid(int width, int height)
+{
+    std::string result = "";
+    double validate = width / ((height - 1.0) * 2.0);
+    std::cout << "Shape with width " << width << " and height " << height << ": " << std::endl;
+
+    if (validate <= 1)
+    {
+        return "Impossible shape!";
+    }
+    else if (validate > 1)
+    {
+        for (int i = 0; i < height; i++) // for loop to print the height
+        {
+            for (int j = 0; j < width; j++) // for loop to print the width
+            {
+                if (j >= i && j <= width - i - 1)
+                {
+                    result += "*"; // print the star
+                }
+
+                else
+                {
+                    result += " "; // print the star
+                }
+            }
+            result += "\n";
+        }
+    }
+
+    return result;
+}
+
+std::string checker3x3(int width, int height)
+{
+
+    double three;
+    std::string result = "";
+    std::cout << "Shape with width " << width << " and height " << height << ": " << std::endl;
+    for (int i = 0; i < height; i++) // for loop to print the height
+    {
+        for (int j = 0; j < width; j++) // for loop to print the width
+        {
+            if (i % 6 < 3) // if the row is even
+            {
+                if (j % 6 < 3) // if the column is even
+                {
+                    result += "*"; // print the star
+                }
+                else
+                {
+                    result += " "; // print the star
+                }
+            }
+            else // if the row is odd
+            {
+                if (j % 6 < 3) // if the column is even
+                {
+                    result += " "; // print the star
+                }
+                else
+                {
+                    result += "*"; // print the star
+                }
             }
         }
         result += "\n";
